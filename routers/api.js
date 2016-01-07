@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var db = require('../models/database');
+var Transaction = require('../models/transaction');
 
 router.get('/transactions', function(req, res) {
-    db.selectTransactions(function(result) {
+    Transaction.selectTransactions(function(result) {
         res.send(result);
     });
 });
