@@ -2,8 +2,7 @@ var express = require('express');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var passport = require('passport');
-var api = require('./routers/api');
-var login = require('./routers/login')
+var router = require('./router');
 
 var app = express();
 
@@ -23,16 +22,15 @@ app.use(passport.session());
 
 app.set('view engine', 'ejs');
 
-app.use('/api', api);
-app.use('/', login);
+app.use('/', router);
 
-app.get('/session', function(req, res) {
-    if (req.isAuthenticated()) { res.send(req.session); }
-    else res.redirect('/');
-});
+// app.get('/session', function(req, res) {
+//     if (req.isAuthenticated()) { res.send(req.session); }
+//     else res.redirect('/');
+// });
 
 app.get('*', function(req, res) {
-    console.log(req.session);
+    //console.log(req.session);
     res.render('index');
 });
 
