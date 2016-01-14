@@ -8,10 +8,12 @@ module.exports = (function() {
     const TransactionsController = require('./controllers/transactions_controller');
     const UsersController = require('./controllers/users_controller');
     const LoginController = require('./controllers/login_controller');
+    const FrontController = require('./controllers/front_controller');
 
     router.use('/transactions', TransactionsController);
     router.use('/users', UsersController);
-    router.use('/auth', LoginController);
+    router.use('/', LoginController);
+    router.use(FrontController);
 
     return router;
 

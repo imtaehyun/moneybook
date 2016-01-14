@@ -7,53 +7,44 @@ module.exports = (function() {
     class Transaction {
 
         constructor() {
-            console.log('transaction contructed');
+
         }
 
-        static selectTransactions(cb) {
+        static find(transaction, cb) {
             db.select('*')
                 .from('transactions')
-                .limit(10)
+                .where(transaction)
                 .then(function(result) {
                     cb(result);
                 });
         }
 
-        static selectTransaction(id, cb) {
-            db.select('*')
-                .from('transactions')
-                .where('id', id)
-                .then(function(result) {
-                    cb(result[0]);
-                });
-        }
-
-        static insertTransaction(transaction, cb) {
+        static create(transaction, cb) {
             db.insert(transaction, 'id')
                 .into('transactions')
                 .then(function(id) {
-                    cb(id);
+                    cb(null, id);
                 })
                 .catch(function(err) {
-
+                    cb(err);
                 });
         }
 
-        static updateTransaction(transaction, cb) {
+        static update(id, transaction, cb) {
             db('transactions')
-                .where('id', transaction.id)
+                .where('id', id)
                 .update(transaction, 'id')
                 .then(function(id) {
                     cb(id);
                 });
         }
 
-        static deleteTransaction(id, cb) {
+        static del(id, cb) {
             db('transactions')
                 .where('id', id)
                 .del()
                 .then(function(affected_row_cnt) {
-                    console.log(affected_row_cnt);
+                    cb(affected_row_cnt);
                 });
         }
     }

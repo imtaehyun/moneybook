@@ -37,8 +37,8 @@ module.exports = (function() {
     });
 
     router.post('/login', passport.authenticate('local', {
-        successRedirect: '/auth/profile',
-        failureRedirect: '/auth/login',
+        successRedirect: '/profile',
+        failureRedirect: '/login',
         failureFlash: false
     }));
 

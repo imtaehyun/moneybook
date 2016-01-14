@@ -22,17 +22,13 @@ app.use(passport.session());
 
 app.set('view engine', 'ejs');
 
-app.use('/', router);
+app.use(router);
 
 // app.get('/session', function(req, res) {
 //     if (req.isAuthenticated()) { res.send(req.session); }
 //     else res.redirect('/');
 // });
 
-app.get('*', function(req, res) {
-    //console.log(req.session);
-    res.render('index');
-});
 
 app.listen(port, function() {
     console.log('Server running on port ' + port);
