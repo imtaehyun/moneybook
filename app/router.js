@@ -10,9 +10,9 @@ module.exports = (function() {
     const LoginController = require('./controllers/login_controller');
     const FrontController = require('./controllers/front_controller');
 
-    router.use('/transactions', TransactionsController);
-    router.use('/users', UsersController);
-    router.use('/', LoginController);
+    router.use(TransactionsController);
+    router.use(UsersController);
+    router.use(LoginController);
     router.use(FrontController);
 
     return router;

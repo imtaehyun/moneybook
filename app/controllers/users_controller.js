@@ -6,15 +6,15 @@ module.exports = (function() {
     const router = express.Router();
     const User = require('../models/user');
 
-    router.get('/', (req, res) => {
+    router.get('/users/', (req, res) => {
 
     });
 
-    router.get('/:id', (req, res) => {
+    router.get('/users/:id', (req, res) => {
 
     });
 
-    router.post('/', (req, res) => {
+    router.post('/users/', (req, res) => {
         User.create({
             email: req.body.email,
             pwd: req.body.pwd
@@ -24,11 +24,11 @@ module.exports = (function() {
         });
     });
 
-    router.put('/:id', (req, res) => {
+    router.put('/users/:id', (req, res) => {
 
     });
 
-    router.delete('/:id', (req, res) => {
+    router.delete('/users/:id', (req, res) => {
 
     });
 
